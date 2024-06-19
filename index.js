@@ -1,21 +1,17 @@
-import { MongoClient } from "mongodb";
+async function fetchItems() {
+    try {
+        const response = await fetch('http://localhost:3000/posts');
+        const items = await response.json();
+        const posts = document.getElementById('posts');
 
-const uri = "mongodb://127.0.0.1:27017/";
-
-const client = new MongoClient(uri);
-
-async function run() {
-  try {
-
-    const database = client.db("devdive");
-    const posts = database.collection("posts");
-
-    const allPosts = await posts.find({}).toArray();
-
-    console.log(allPosts)
-
-  } finally {
-    await client.close();
-  }
+        items.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.title;
+            posts.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching items:', error);
+    }
 }
-run().catch(console.dir);
+
+window.onload = fetchItems;

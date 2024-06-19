@@ -1,6 +1,6 @@
 # DevDive (In progress)
 
-- Build a simple blogging application where users can register, login, setup their blog and write posts.
+- Build a **blogging application** where users can register, login, setup their blog and write posts.
 
 ## Day 1-2: User Authentication
 
