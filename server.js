@@ -15,9 +15,17 @@ const coll = db.collection("posts");
 app.use(cors());
 app.use(express.json());
 
-app.get('/posts', async (req, res) => {
+app.get('/posts', async (req,res) => {
   const allPosts = await coll.find().toArray();
   res.send(allPosts)
+})
+
+app.get('/topics', async (req,res) => {
+  const allPosts = await coll.find().toArray();
+  const topics = [
+    ...new Set(allPosts.flatMap(post => post.topics))
+  ];
+  res.send(topics)
 })
 
 app.post('/posts', async (req, res) => {
