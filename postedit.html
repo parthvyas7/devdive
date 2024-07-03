@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>DevDive</title>
+  </head>
+  <body>
+    <header class="bg-white">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+      >
+        <div class="flex lg:flex-1">
+          <a
+            href="index.html"
+            class="text-lg font-semibold leading-6 text-gray-900 hover:opacity-80"
+          >
+            DevDive
+          </a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="./signin.html"
+            class="text-sm font-semibold leading-6 text-gray-900 hover:opacity-80"
+            >Log in <span aria-hidden="true">&rarr;</span></a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="loader" class="w-full max-w-md mx-auto animate-pulse p-9">
+      <h1 class="h-2 bg-gray-300 rounded-lg w-52 dark:bg-gray-600"></h1>
+      <p class="w-48 h-2 mt-6 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-full h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-64 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-4/5 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+    </div>
+    <article class="container mx-auto">
+      <div id="postEditor" class="w-full">
+        <textarea
+          id="title"
+          class="w-full p-3 text-5xl"
+          rows="1"
+          placeholder="Title..."
+        ></textarea>
+        <textarea
+          id="content"
+          class="w-full p-3 text-2xl h-auto"
+          rows="5"
+          placeholder="Tell your story..."
+        ></textarea>
+        <textarea
+          id="topics"
+          class="w-full p-3 text-lg"
+          rows="1"
+          placeholder="Topics..."
+        ></textarea>
+        <div class="flex items-center justify-between bg-white p-3">
+          <button
+            type="button"
+            class="rounded bg-slate-400 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="rounded bg-slate-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700"
+          >
+            Save & Publish
+          </button>
+        </div>
+      </div>
+    </article>
+  </body>
+  <script src="postedit.js"></script>
+</html>

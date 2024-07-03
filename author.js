@@ -46,9 +46,14 @@ fetch('http://localhost:3000/posts').then((res) => {
 
         clone.querySelector('h3#title').textContent = item.title
 
-        clone.querySelector('a#postLink').addEventListener('click',(e)=>{
+        clone.querySelector('a#postLink').addEventListener('click', (e) => {
             e.preventDefault();
             window.location.href = `postview.html?postId=${item._id}`;
+        })
+
+        clone.querySelector('a#editPostId').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = `postedit.html?postId=${item._id}`;
         })
 
         clone.querySelector('p#author').textContent = item.author
@@ -61,21 +66,6 @@ fetch('http://localhost:3000/posts').then((res) => {
         })
         clone.querySelector('div#postTopics').appendChild(postTopicsTemplateClone)
         postsList.appendChild(clone);
-    });
-}).catch((err) => console.log(err))
-
-let topicList = document.querySelector('div#topics')
-template = document.querySelector('template#topic').content
-clone = document.importNode(template, true);
-
-fetch('http://localhost:3000/topics').then((res) => {
-    return res.json()
-}).then((topics) => {
-    topics.forEach(item => {
-        template = document.querySelector('template#topic').content
-        clone = document.importNode(template, true);
-        clone.querySelector('a#topic').textContent = item
-        topicList.appendChild(clone);
     });
 }).catch((err) => console.log(err))
 

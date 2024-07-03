@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>DevDive</title>
+  </head>
+  <body>
+    <header class="bg-white">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+      >
+        <div class="flex lg:flex-1">
+          <a
+            href="index.html"
+            class="text-lg font-semibold leading-6 text-gray-900 hover:opacity-80"
+          >
+            DevDive
+          </a>
+        </div>
+
+        <div class="relative">
+          <input
+            type="text"
+            id="Search"
+            placeholder="Search..."
+            class="w-full rounded-lg border-gray-200 px-6 py-2 shadow-sm sm:text-sm"
+          />
+          <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+            <button type="button" class="text-gray-600 hover:text-gray-700">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-4 w-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+            </button>
+          </span>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="./signin.html"
+            class="text-sm font-semibold leading-6 text-gray-900 hover:opacity-80"
+            >Log in <span aria-hidden="true">&rarr;</span></a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="loader" class="w-full max-w-md mx-auto animate-pulse p-9">
+      <h1 class="h-2 bg-gray-300 rounded-lg w-52 dark:bg-gray-600"></h1>
+
+      <p class="w-48 h-2 mt-6 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-full h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-64 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+      <p class="w-4/5 h-2 mt-4 bg-gray-200 rounded-lg dark:bg-gray-700"></p>
+    </div>
+    <article class="container mx-auto">
+      <h1 id="title" class="text-6xl py-2"></h1>
+      <time id="publishedOn" class="text-xs text-gray-500"></time>
+      <p id="author" class="text-lg"></p>
+      <p id="readTime" class="text-sm">3 min read</p>
+      <p id="content" class="text-xl py-2"></p>
+      <div id="postTopics" class="my-4 flex flex-wrap gap-1"></div>
+      <template id="postTopics">
+        <span
+          id="postTopic"
+          class="whitespace-nowrap rounded-full bg-slate-100 px-2.5 py-0.5 text-lg text-slate-800"
+        >
+        </span>
+      </template>
+      <div class="flex justify-around items-center">
+        <button
+          id="appreciationCount"
+          class="active:scale-125 bg-slate-100 rounded-full p-3"
+        >
+          <span class="grid grid-cols-2 gap-1">
+            <svg
+              class="w-7 h-7"
+              data-slot="icon"
+              data-darkreader-inline-stroke=""
+              aria-hidden="true"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <p id="appreciationCount" class="text-xl"></p>
+          </span>
+        </button>
+      </div>
+      <p class="text-xl text-center mt-2">
+        Like this post if you appreciate the author's work!
+      </p>
+    </article>
+
+    <div id="commentSection" class="container mx-auto">
+      <h3 class="text-xl py-2">Comments</h3>
+      <div id="commentBox" class="w-full rounded border">
+        <textarea
+          id="commentBody"
+          class="w-full sm:text-sm p-3"
+          rows="3"
+          placeholder="Comment here..."
+        ></textarea>
+        <div class="flex items-center justify-between bg-white p-3">
+          <p>
+            Follow
+            <a href="#" class="hover:underline font-semibold">community guideline</a> while
+            posting
+          </p>
+          <button
+            type="button"
+            class="rounded bg-slate-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-700"
+          >
+            Post
+          </button>
+        </div>
+      </div>
+      <div id="comments" class="py-4"></div>
+      <template id="comment">
+        <div id="comment" class="py-2">
+          <p id="commentAuthor" class="text-xs"></p>
+          <p id="commentDate" class="text-xs text-slate-500"></p>
+          <p id="commentBody" class="text-xl"></p>
+        </div>
+      </template>
+    </div>
+    <footer class="bottom-0 relative w-full h-14 flex justify-around">
+      <p class="font-thin">
+        A place to read, write, and deepen your understanding
+      </p>
+    </footer>
+  </body>
+  <script src="postview.js"></script>
+</html>

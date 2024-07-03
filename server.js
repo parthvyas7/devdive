@@ -1,5 +1,5 @@
 import process from 'node:process';
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import express from 'express';
 import cors from 'cors';
 const app = express();
@@ -15,12 +15,29 @@ const coll = db.collection("posts");
 app.use(cors());
 app.use(express.json());
 
-app.get('/posts', async (req,res) => {
+app.get('/posts', async (req, res) => {
   const allPosts = await coll.find().toArray();
   res.send(allPosts)
 })
 
-app.get('/topics', async (req,res) => {
+app.get('/posts/:id', async (req, res) => {
+
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).send("Invalid post ID format");
+  }
+
+  const objectId = new ObjectId(req.params.id);
+
+  const post = await coll.findOne({ _id: objectId });
+
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+
+  res.send(post)
+})
+
+app.get('/topics', async (req, res) => {
   const allPosts = await coll.find().toArray();
   const topics = [
     ...new Set(allPosts.flatMap(post => post.topics))
